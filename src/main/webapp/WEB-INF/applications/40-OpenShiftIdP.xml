@@ -41,6 +41,17 @@
                           <param name="accessTokenSkewMillis" value="1200000"/>
                           <param name="codeTokenSkewMilis" value="1200000"/>
                         </trust>
+
+                        <trust name="gitlab">
+                            <param name="clientID" value="gitlab"/>
+                            <param name="clientSecret" value="#[OU_OIDC_OPENSHIFT_SECRET]"/>
+                            <param name="redirectURI" value="#[OU_OIDC_GITLAB_REIDRECT]"/>
+                            <param name="codeLastMileKeyName" value="lastmile-oidc"/>
+                            <param name="authChainName" value="LoginService"/>
+                            <param name="accessTokenTimeToLive" value="1200000"/>
+                            <param name="accessTokenSkewMillis" value="1200000"/>
+                            <param name="codeTokenSkewMilis" value="1200000"/>
+                        </trust>
                     </trusts>
                 </idp>
             </url>
