@@ -60,6 +60,11 @@
       <artifactId>unison-scalejs-main</artifactId>
       <version>1.0.17</version>
     </dependency>
+    <dependency>
+        <groupId>com.tremolosecurity.unison</groupId>
+        <artifactId>unison-applications-openshift3</artifactId>
+        <version>1.0.17</version>
+      </dependency>
   </dependencies>
   <build>
     <plugins>
