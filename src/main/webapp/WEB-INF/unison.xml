@@ -67,7 +67,7 @@
             </orgs>
             <orgs name="OpenShift Project Administrators" description="List of projects that can be requested for administration rights" uuid="cecae082-c85d-48df-a837-4726bb755180">
                 <azRules>
-                    <rule scope="dn" constraint="o=Tremolo"/>
+                    <rule scope="filter" constraint="(groups=OpenShift - cluster-admins)"/>
                 </azRules>
             </orgs>
             <orgs name="OpenShift Administration" description="Request access for managing openshift clusters" uuid="441a2bf1-3e47-4d40-a994-99faa15f997a">
@@ -77,7 +77,7 @@
             </orgs>
             <orgs name="OpenShift Project Viewers" description="Read only access to OpenShift projects" uuid="97137c31-a417-4498-907d-e61f8686eb97">
                 <azRules>
-                    <rule scope="dn" constraint="o=Tremolo"/>
+                    <rule scope="filter" constraint="(groups=OpenShift - cluster-admins)"/>
                 </azRules>
             </orgs>
             <orgs name="Approvers" description="List of approver groups.  To add a user to an approver group, request the access for the user to add with an existing approver." uuid="f9923cb2-fcc3-4ed0-9b87-f99fa4445344">
