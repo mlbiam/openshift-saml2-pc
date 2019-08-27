@@ -25,6 +25,13 @@
     </params>
   </authMech>
   <authMech>
+      <name>createuid</name>
+      <required>required</required>
+      <params>
+        
+      </params>
+    </authMech>
+  <authMech>
     <name>jit</name>
     <required>required</required>
     <params>
