@@ -20,9 +20,12 @@
     <param name="userSQL" value=""/>
     <param name="groupSQL" value=""/>
     <param name="customProvider" value=""/>
+    <param name="passwordField" value="userpassword" />
+    <param name="supportPasswords" value="true" />
   </params>
   <targetAttribute name="sub" source="sub" sourceType="user"/>
   <targetAttribute name="mail" source="mail" sourceType="user"/>
   <targetAttribute name="firstName" source="firstName" sourceType="user"/>
   <targetAttribute name="lastName" source="lastName" sourceType="user"/>
+  
 </target>

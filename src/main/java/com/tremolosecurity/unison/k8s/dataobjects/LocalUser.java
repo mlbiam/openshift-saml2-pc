@@ -23,6 +23,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
 import java.util.List;
 
 @Entity
@@ -34,6 +37,7 @@ public class LocalUser {
 	String mail;
 	String firstName;
 	String lastName;
+	String password;
 	
 	List<LocalGroup> groups;
 
@@ -101,7 +105,15 @@ public class LocalUser {
 		this.lastName = lastName;
 	}
 
-	
+	@Column(name="userpassword",nullable=true)
+	@Type(type="text")
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 
 }

@@ -1,4 +1,4 @@
-<resultGroup name="Default Login Failure">
+<resultGroup name="noauaz">
   <result>
     <type>redirect</type>
     <source>static</source>

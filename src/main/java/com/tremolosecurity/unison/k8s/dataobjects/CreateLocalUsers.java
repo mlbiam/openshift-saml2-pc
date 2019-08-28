@@ -116,6 +116,11 @@ public class CreateLocalUsers implements Insert {
 			users.setDescription("All users are members");
 			session.save(users);
 
+			LocalGroup devops = new LocalGroup();
+			users.setName("devops");
+			users.setDescription("Access to DevOps infrastructure");
+			session.save(devops);
+
 			LocalUser sysUser = new LocalUser();
 			sysUser.setSub("system");
 			sysUser.setMail("");
