@@ -12,7 +12,7 @@
                     <azFail>Default Login Failure</azFail>
                 </results>
                 <azRules>
-                    <rule scope="filter" constraint="(groups=OpenShift -*)"/>
+                    <rule scope="filter" constraint="(&amp;(groups=OpenShift -*)(groups=OpenUnison - devops))"/>
                 </azRules>
                 <idp className="com.tremolosecurity.idp.providers.OpenIDConnectIdP">
                     <params name="jwtSigningKey" value="unison-saml2-rp-sig"/>
