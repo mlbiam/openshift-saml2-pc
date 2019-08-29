@@ -44,7 +44,7 @@
 
     <ifAttrHasValue name="sandboxExists" value="false">
       <onSuccess>
-          <customTask className="com.tremolosecurity.provisioning.tasks.ClearGroups"/>            
+          <customTask className="com.tremolosecurity.provisioning.customTasks.ClearGroups"/>            
           <customTask className="com.tremolosecurity.provisioning.customTasks.AddGroupToStore">
               <param name="target" value="jitdb"/>
               <param name="name" value="approvers-openshift-$projectName$"/>
