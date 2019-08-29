@@ -4,7 +4,7 @@
         <required>required</required>
         <params>
           <param name="FORMLOGIN_JSP" value="/auth/forms/defaultForm.jsp"/>
-          <param name="uidAttr" value="(nail=${user})"/>
+          <param name="uidAttr" value="(mail=${user})"/>
           <param name="uidIsFilter" value="true"/>
         </params>
       </authMech>
