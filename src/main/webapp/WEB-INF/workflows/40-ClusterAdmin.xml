@@ -35,6 +35,9 @@
                 <provision sync="true" target="openshift" setPassword="false" onlyPassedInAttributes="false">
                     <attributes/>
                 </provision>
+                <provision sync="true" target="openshift-prod" setPassword="false" onlyPassedInAttributes="false">
+                    <attributes/>
+                </provision>
             </onFailure>
             <emailTemplate>There is an open request for cluster administration</emailTemplate>
             <approvers>
