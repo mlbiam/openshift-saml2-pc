@@ -51,7 +51,7 @@ public class PatchK8sObject implements CustomTask {
     String kind;
     String url;
     String label;
-    boolean jsonPatch;
+    
     
 
     transient WorkflowTask task;
@@ -120,7 +120,7 @@ public class PatchK8sObject implements CustomTask {
         this.kind = params.get("kind").getValues().get(0);
         this.url = params.get("url").getValues().get(0);
         this.label = "kubernetes-" + this.kind.toLowerCase();
-        this.jsonPatch = params.get("jsonPatch").getValues().get(0).equalsIgnoreCase("true");
+        
         this.task = task;
 
 	}
