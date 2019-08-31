@@ -75,7 +75,7 @@
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift"/>
-                    <param name="template" value="{&quot;kind&quot;:&quot;RoleBinding&quot;,&quot;apiVersion&quot;:&quot;rbac.authorization.k8s.io/v1beta1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;viewers&quot;,&quot;namespace&quot;:&quot;$projectName$-test&quot;},&quot;subjects&quot;:[{&quot;kind&quot;:&quot;Group&quot;,&quot;name&quot;:&quot;system:authenticated:oauth&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}],&quot;roleRef&quot;:{&quot;kind&quot;:&quot;ClusterRole&quot;,&quot;name&quot;:&quot;view&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}}"/>
+                    <param name="template" value="{&quot;kind&quot;:&quot;RoleBinding&quot;,&quot;apiVersion&quot;:&quot;rbac.authorization.k8s.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;viewers&quot;,&quot;namespace&quot;:&quot;$projectName$-test&quot;},&quot;subjects&quot;:[{&quot;kind&quot;:&quot;Group&quot;,&quot;name&quot;:&quot;system:authenticated:oauth&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}],&quot;roleRef&quot;:{&quot;kind&quot;:&quot;ClusterRole&quot;,&quot;name&quot;:&quot;view&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}}"/>
                     <param name="kind" value="RoleBinding" />
                     <param name="url" value="/apis/rbac.authorization.k8s.io/v1/namespaces/$projectName$/rolebindings" />
                 </customTask>
@@ -111,7 +111,7 @@
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift-prod"/>
-                    <param name="template" value="{&quot;kind&quot;:&quot;RoleBinding&quot;,&quot;apiVersion&quot;:&quot;rbac.authorization.k8s.io/v1beta1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;viewers&quot;,&quot;namespace&quot;:&quot;$projectName$-prod&quot;},&quot;subjects&quot;:[{&quot;kind&quot;:&quot;Group&quot;,&quot;name&quot;:&quot;system:authenticated:oauth&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}],&quot;roleRef&quot;:{&quot;kind&quot;:&quot;ClusterRole&quot;,&quot;name&quot;:&quot;view&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}}"/>
+                    <param name="template" value="{&quot;kind&quot;:&quot;RoleBinding&quot;,&quot;apiVersion&quot;:&quot;rbac.authorization.k8s.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;viewers&quot;,&quot;namespace&quot;:&quot;$projectName$-prod&quot;},&quot;subjects&quot;:[{&quot;kind&quot;:&quot;Group&quot;,&quot;name&quot;:&quot;system:authenticated:oauth&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}],&quot;roleRef&quot;:{&quot;kind&quot;:&quot;ClusterRole&quot;,&quot;name&quot;:&quot;view&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}}"/>
                     <param name="kind" value="RoleBinding" />
                     <param name="url" value="/apis/rbac.authorization.k8s.io/v1/namespaces/$projectName$/rolebindings" />
                 </customTask>

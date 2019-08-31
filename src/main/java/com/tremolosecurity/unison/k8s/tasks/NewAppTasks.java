@@ -18,6 +18,11 @@ public class NewAppTasks implements CustomTask {
     @Override
     public boolean doTask(User user, Map<String, Object> request) throws ProvisioningException {
         String sshKey = ((String) request.get("gitPrivateKey"));
+
+        if (! sshKey.endsWith("\n")) {
+            sshKey += "\n";
+        }
+
         try {
             String base64PrivKey = Base64.getEncoder().encodeToString(sshKey.getBytes("UTF-8"));
             request.put("base64SshPrivateKey", base64PrivKey);
