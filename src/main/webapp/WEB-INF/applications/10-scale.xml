@@ -200,8 +200,8 @@
                         <param name="gitPrivateKey.displayName" value="Git Deploy Private Key"/>
                         <param name="gitPrivateKey.readOnly" value="false"/>
                         <param name="gitPrivateKey.required" value="true"/>
-                        <param name="gitPrivateKey.regEx" value=".*"/>
-                        <param name="gitPrivateKey.regExFailedMsg" value="Invalid Image Stream"/>
+                        <!-- param name="gitPrivateKey.regEx" value=".*"/>
+                        <param name="gitPrivateKey.regExFailedMsg" value="Invalid Private Key"/> -->
                         <param name="gitPrivateKey.minChars" value="0"/>
                         <param name="gitPrivateKey.maxChars" value="0"/>
                         <param name="gitPrivateKey.unique" value="false"/>
