@@ -30,7 +30,7 @@
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift"/>
-                    <param name="template" value="{&quot;kind&quot;:&quot;Secret&quot;,&quot;apiVersion&quot;:&quot;v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;$projectName$-pull&quot;,&quot;namespace&quot;:&quot;jenkins&quot;},&quot;data&quot;:{&quot;ssh-privatekey&quot;:&quot;$base64SshPrivateKey$&quot;},&quot;type&quot;:&quot;kubernetes.io/ssh-auth&quot;}"/>
+                    <param name="template" value="{&quot;kind&quot;:&quot;Secret&quot;,&quot;apiVersion&quot;:&quot;v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;$projectName$-pull&quot;,&quot;namespace&quot;:&quot;jenkins&quot;,&quot;labels&quot;:{&quot;credential.sync.jenkins.openshift.io&quot;:&quot;true&quot;}},&quot;data&quot;:{&quot;ssh-privatekey&quot;:&quot;$base64SshPrivateKey$&quot;},&quot;type&quot;:&quot;kubernetes.io/ssh-auth&quot;}"/>
                     <param name="kind" value="Secret" />
                     <param name="url" value="/api/v1/namespaces/jenkins/secrets" />
                 </customTask>
