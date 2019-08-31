@@ -45,7 +45,7 @@ public class BuildDockerToken implements CustomTask {
             for (Object o : secrets) {
                 JSONObject secretData = (JSONObject) o;
                 String name = (String) secretData.get("name");
-                if (name.startsWith("default-token-")) {
+                if (name.startsWith("deployer-token-")) {
                     json = oc.callWS(oc.getAuthToken(), con, "/api/v1/namespaces/" + projectName + "-test/secrets/" + name);
                     secretForSA = (JSONObject) parser.parse(json);
                     break;
