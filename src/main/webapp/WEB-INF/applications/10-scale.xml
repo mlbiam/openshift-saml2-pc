@@ -186,15 +186,15 @@
                         <param name="gitSshUrl.type" value="text"/>
 
                         <param name="attributeNames" value="imageStream"/>
-                        <param name="gitSshUrl.displayName" value="S2I Source Image Stream"/>
-                        <param name="gitSshUrl.readOnly" value="false"/>
-                        <param name="gitSshUrl.required" value="true"/>
-                        <param name="gitSshUrl.regEx" value=".*"/>
-                        <param name="gitSshUrl.regExFailedMsg" value="Invalid Image Stream"/>
-                        <param name="gitSshUrl.minChars" value="0"/>
-                        <param name="gitSshUrl.maxChars" value="0"/>
-                        <param name="gitSshUrl.unique" value="false"/>
-                        <param name="gitSshUrl.type" value="text"/>
+                        <param name="imageStream.displayName" value="S2I Source Image Stream"/>
+                        <param name="imageStream.readOnly" value="false"/>
+                        <param name="imageStream.required" value="true"/>
+                        <param name="imageStream.regEx" value=".*"/>
+                        <param name="imageStream.regExFailedMsg" value="Invalid Image Stream"/>
+                        <param name="imageStream.minChars" value="0"/>
+                        <param name="imageStream.maxChars" value="0"/>
+                        <param name="imageStream.unique" value="false"/>
+                        <param name="imageStream.type" value="text"/>
 
                         <param name="attributeNames" value="gitPrivateKey"/>
                         <param name="gitPrivateKey.displayName" value="Git Deploy Private Key"/>
