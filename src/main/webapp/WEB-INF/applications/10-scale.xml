@@ -150,8 +150,8 @@
                         <param name="workflowName" value=""/>
                         <param name="logoutURL" value="/logout"/>
                         <param name="homeURL" value="/"/>
-                        <param name="frontPage.text" value="Use this page to request the creation of a new project.  Once the project is approved you will be the first approver and administrator.  You will be notified when the project is ready."/>
-                        <param name="frontPage.title" value="Create New Project"/>
+                        <param name="frontPage.text" value="Use this page to request the creation of a new application.  Once the application is approved you will be notified when the application is ready."/>
+                        <param name="frontPage.title" value="Create New Application"/>
                         <param name="preSetPassword" value="false"/>
                         <param name="requireReason" value="true"/>
                         <param name="requireReCaptcha" value="false"/>
@@ -162,6 +162,7 @@
                         <param name="useCallWorkflowClass" value="true"/>
                         <param name="callWorkflowClassName" value="com.tremolosecurity.scalejs.K8sProjectCheck"/>
                         <param name="submitLoggedInUser" value="true"/>
+                        
                         <param name="attributeNames" value="projectName"/>
                         <param name="projectName.displayName" value="Project Name"/>
                         <param name="projectName.readOnly" value="false"/>
@@ -173,7 +174,40 @@
                         <param name="projectName.unique" value="false"/>
                         <param name="projectName.type" value="text"/>
 
-                        <param name="callWorkflowInit" value="workflowName=NewOpenShiftProject" />
+                        <param name="attributeNames" value="gitSshUrl"/>
+                        <param name="gitSshUrl.displayName" value="Git SSH URL"/>
+                        <param name="gitSshUrl.readOnly" value="false"/>
+                        <param name="gitSshUrl.required" value="true"/>
+                        <param name="gitSshUrl.regEx" value=".*"/>
+                        <param name="gitSshUrl.regExFailedMsg" value="Invalid GIT URL"/>
+                        <param name="gitSshUrl.minChars" value="0"/>
+                        <param name="gitSshUrl.maxChars" value="0"/>
+                        <param name="gitSshUrl.unique" value="false"/>
+                        <param name="gitSshUrl.type" value="text"/>
+
+                        <param name="attributeNames" value="imageStream"/>
+                        <param name="gitSshUrl.displayName" value="S2I Source Image Stream"/>
+                        <param name="gitSshUrl.readOnly" value="false"/>
+                        <param name="gitSshUrl.required" value="true"/>
+                        <param name="gitSshUrl.regEx" value=".*"/>
+                        <param name="gitSshUrl.regExFailedMsg" value="Invalid Image Stream"/>
+                        <param name="gitSshUrl.minChars" value="0"/>
+                        <param name="gitSshUrl.maxChars" value="0"/>
+                        <param name="gitSshUrl.unique" value="false"/>
+                        <param name="gitSshUrl.type" value="text"/>
+
+                        <param name="attributeNames" value="gitPrivateKey"/>
+                        <param name="gitPrivateKey.displayName" value="Git Deploy Private Key"/>
+                        <param name="gitPrivateKey.readOnly" value="false"/>
+                        <param name="gitPrivateKey.required" value="true"/>
+                        <param name="gitPrivateKey.regEx" value=".*"/>
+                        <param name="gitPrivateKey.regExFailedMsg" value="Invalid Image Stream"/>
+                        <param name="gitPrivateKey.minChars" value="0"/>
+                        <param name="gitPrivateKey.maxChars" value="0"/>
+                        <param name="gitPrivateKey.unique" value="false"/>
+                        <param name="gitPrivateKey.type" value="textarea"/>
+
+                        <param name="callWorkflowInit" value="workflowName=DeployApplication" />
                         <param name="callWorkflowInit" value="targetName=openshift" />
                         <param name="callWorkflowInit" value="projectAttributeName=projectName" />
 
