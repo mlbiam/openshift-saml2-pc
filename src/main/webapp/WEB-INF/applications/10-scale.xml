@@ -277,7 +277,7 @@
                         <param name="homeURL" value="/"/>
                         <param name="frontPage.text" value="Create New User"/>
                         <param name="frontPage.title" value="Create New User"/>
-                        <param name="preSetPassword" value="false"/>
+                        <param name="preSetPassword" value="true"/>
                         <param name="requireReason" value="true"/>
                         <param name="requireReCaptcha" value="false"/>
                         <param name="rcSiteKey" value=""/>

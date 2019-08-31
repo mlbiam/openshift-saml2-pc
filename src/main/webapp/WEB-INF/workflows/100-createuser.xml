@@ -14,7 +14,7 @@
             <onSuccess>
       
               <addGroup name="users" />
-              <provision sync="true" target="jitdb" setPassword="false" onlyPassedInAttributes="false" >
+              <provision sync="true" target="jitdb" setPassword="true" onlyPassedInAttributes="false" >
                 <attributes>
                   <value>sub</value>
                   <value>mail</value>
