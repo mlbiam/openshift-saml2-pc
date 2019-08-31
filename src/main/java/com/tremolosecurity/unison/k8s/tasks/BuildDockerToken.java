@@ -69,7 +69,7 @@ public class BuildDockerToken implements CustomTask {
             regDomain.put("username", "pull");
             regDomain.put("password", token);
             regDomain.put("email", "doesnotmatter@doesnotmatter.com");
-            regDomain.put("auth", Base64.getEncoder().encode(("pull:" + token).getBytes("UTF-8")));
+            regDomain.put("auth", new String(Base64.getEncoder().encode(("pull:" + token).getBytes("UTF-8"))));
 
             String dockerToken = dockerCreds.toString();
             String b64EncodedDockerToken = Base64.getEncoder().encodeToString(dockerToken.getBytes("UTF-8"));
