@@ -51,7 +51,7 @@ public class NewAppTasks implements CustomTask {
        
 
         OpenShiftTarget oc = (OpenShiftTarget) GlobalEntries.getGlobalEntries().getConfigManager().getProvisioningEngine().getTarget(this.target).getProvider();
-        String url = "https://" + this.apiserverhost + "/apis/build.openshift.io/v1/namespaces/jenkins/buildconfigs/" + projectName + "/webhooks/" + secretData + "/gitlab";
+        String url = "https://" + this.apiserverhost + "/apis/build.openshift.io/v1/namespaces/jenkins/buildconfigs/" + projectName + "-pipeline/webhooks/" + secretData + "/gitlab";
         try {
             request.put("weebhookURL", new String(Base64.getEncoder().encode(url.getBytes("UTF-8"))));
         } catch (UnsupportedEncodingException e) {
