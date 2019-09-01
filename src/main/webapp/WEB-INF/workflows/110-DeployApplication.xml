@@ -114,7 +114,7 @@
                     <param name="targetName" value="openshift"/>
                     <param name="template" value="{&quot;kind&quot;:&quot;Route&quot;,&quot;apiVersion&quot;:&quot;route.openshift.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;$projectName$&quot;,&quot;namespace&quot;:&quot;$projectName$-test&quot;},&quot;spec&quot;:{&quot;host&quot;:&quot;$projectName$.#[DEV_DNS_SUFFIX]&quot;,&quot;subdomain&quot;:&quot;&quot;,&quot;to&quot;:{&quot;kind&quot;:&quot;Service&quot;,&quot;name&quot;:&quot;$projectName$&quot;,&quot;weight&quot;:100},&quot;port&quot;:{&quot;targetPort&quot;:8080},&quot;tls&quot;:{&quot;termination&quot;:&quot;edge&quot;},&quot;wildcardPolicy&quot;:&quot;None&quot;}}"/>
                     <param name="kind" value="Route" />
-                    <param name="url" value="/apis/route.openshift.io/v1/namespaces/$projectName$-test/routes/$projectName$" />
+                    <param name="url" value="/apis/route.openshift.io/v1/namespaces/$projectName$-test/routes" />
                 </customTask>
 
                 <!-- Prod objects-->
@@ -157,7 +157,7 @@
                     <param name="targetName" value="openshift-prod"/>
                     <param name="template" value="{&quot;kind&quot;:&quot;Route&quot;,&quot;apiVersion&quot;:&quot;route.openshift.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;$projectName$&quot;,&quot;namespace&quot;:&quot;$projectName$-prod&quot;},&quot;spec&quot;:{&quot;host&quot;:&quot;$projectName$.#[PROD_DNS_SUFFIX]&quot;,&quot;subdomain&quot;:&quot;&quot;,&quot;to&quot;:{&quot;kind&quot;:&quot;Service&quot;,&quot;name&quot;:&quot;$projectName$&quot;,&quot;weight&quot;:100},&quot;port&quot;:{&quot;targetPort&quot;:8080},&quot;tls&quot;:{&quot;termination&quot;:&quot;edge&quot;},&quot;wildcardPolicy&quot;:&quot;None&quot;}}"/>
                     <param name="kind" value="Route" />
-                    <param name="url" value="/apis/route.openshift.io/v1/namespaces/$projectName$-prod/routes/$projectName$" />
+                    <param name="url" value="/apis/route.openshift.io/v1/namespaces/$projectName$-prod/routes" />
                 </customTask>
 
                 <!-- provision pull token to prod -->
