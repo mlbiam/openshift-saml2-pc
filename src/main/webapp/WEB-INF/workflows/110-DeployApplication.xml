@@ -8,6 +8,12 @@
             <param name="attribute" value="imageStream"/>
             <param name="keepInUser" value="false"/>
         </customTask>
+
+        <customTask className="com.tremolosecurity.provisioning.customTasks.CopyFromUserToRequest">
+            <param name="attribute" value="uid"/>
+            <param name="keepInUser" value="true"/>
+        </customTask>
+
         <customTask className="com.tremolosecurity.provisioning.customTasks.LoadAttributes">
             <param name="nameAttr" value="uid"/>
             <param name="name" value="givenname"/>
@@ -19,7 +25,9 @@
                 
                 
                 <!-- Jenkins Environment -->
-                <customTask className="com.tremolosecurity.unison.k8s.tasks.NewAppTasks" />
+                <customTask className="com.tremolosecurity.unison.k8s.tasks.NewAppTasks" >
+                    <param name="target" value="openshift"/>
+                </customTask>
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift"/>
@@ -37,9 +45,23 @@
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift"/>
-                    <param name="template" value="{&quot;apiVersion&quot;:&quot;build.openshift.io/v1&quot;,&quot;kind&quot;:&quot;BuildConfig&quot;,&quot;metadata&quot;:{&quot;labels&quot;:{&quot;app&quot;:&quot;openjdk18-web-basic-s2i&quot;,&quot;application&quot;:&quot;$projectName$&quot;,&quot;template&quot;:&quot;openjdk18-web-basic-s2i&quot;,&quot;xpaas&quot;:&quot;1.4.16&quot;},&quot;name&quot;:&quot;$projectName$&quot;,&quot;namespace&quot;:&quot;jenkins&quot;},&quot;spec&quot;:{&quot;nodeSelector&quot;:{},&quot;output&quot;:{&quot;to&quot;:{&quot;kind&quot;:&quot;ImageStreamTag&quot;,&quot;name&quot;:&quot;$projectName$:latest&quot;}},&quot;postCommit&quot;:{},&quot;resources&quot;:{},&quot;runPolicy&quot;:&quot;Serial&quot;,&quot;source&quot;:{&quot;contextDir&quot;:&quot;/&quot;,&quot;git&quot;:{&quot;ref&quot;:&quot;master&quot;,&quot;uri&quot;:&quot;$gitSshInternalURL$&quot;},&quot;sourceSecret&quot;:{&quot;name&quot;:&quot;$projectName$-pull&quot;},&quot;type&quot;:&quot;Git&quot;},&quot;strategy&quot;:{&quot;sourceStrategy&quot;:{&quot;forcePull&quot;:true,&quot;from&quot;:{&quot;kind&quot;:&quot;ImageStreamTag&quot;,&quot;name&quot;:&quot;$imageStream$&quot;,&quot;namespace&quot;:&quot;openshift&quot;}},&quot;type&quot;:&quot;Source&quot;},&quot;triggers&quot;:[{&quot;github&quot;:{&quot;secret&quot;:&quot;EBAhX5cN&quot;},&quot;type&quot;:&quot;GitHub&quot;},{&quot;generic&quot;:{&quot;secret&quot;:&quot;3kk0JOYY&quot;},&quot;type&quot;:&quot;Generic&quot;},{&quot;imageChange&quot;:{},&quot;type&quot;:&quot;ImageChange&quot;},{&quot;type&quot;:&quot;ConfigChange&quot;}]},&quot;status&quot;:{&quot;lastVersion&quot;:0}}"/>
+                    <param name="template" value="{&quot;apiVersion&quot;:&quot;build.openshift.io/v1&quot;,&quot;kind&quot;:&quot;BuildConfig&quot;,&quot;metadata&quot;:{&quot;labels&quot;:{&quot;app&quot;:&quot;openjdk18-web-basic-s2i&quot;,&quot;application&quot;:&quot;$projectName$&quot;,&quot;template&quot;:&quot;openjdk18-web-basic-s2i&quot;,&quot;xpaas&quot;:&quot;1.4.16&quot;},&quot;name&quot;:&quot;$projectName$&quot;,&quot;namespace&quot;:&quot;jenkins&quot;},&quot;spec&quot;:{&quot;nodeSelector&quot;:{},&quot;output&quot;:{&quot;to&quot;:{&quot;kind&quot;:&quot;ImageStreamTag&quot;,&quot;name&quot;:&quot;$projectName$:latest&quot;}},&quot;postCommit&quot;:{},&quot;resources&quot;:{},&quot;runPolicy&quot;:&quot;Serial&quot;,&quot;source&quot;:{&quot;contextDir&quot;:&quot;/&quot;,&quot;git&quot;:{&quot;ref&quot;:&quot;master&quot;,&quot;uri&quot;:&quot;$gitSshInternalURL$&quot;},&quot;sourceSecret&quot;:{&quot;name&quot;:&quot;$projectName$-pull&quot;},&quot;type&quot;:&quot;Git&quot;},&quot;strategy&quot;:{&quot;sourceStrategy&quot;:{&quot;forcePull&quot;:true,&quot;from&quot;:{&quot;kind&quot;:&quot;ImageStreamTag&quot;,&quot;name&quot;:&quot;$imageStream$&quot;,&quot;namespace&quot;:&quot;openshift&quot;}},&quot;type&quot;:&quot;Source&quot;},&quot;triggers&quot;:[{&quot;imageChange&quot;:{},&quot;type&quot;:&quot;ImageChange&quot;},{&quot;type&quot;:&quot;ConfigChange&quot;}]},&quot;status&quot;:{&quot;lastVersion&quot;:0}}"/>
                     <param name="kind" value="BuildConfig" />
                     <param name="url" value="/apis/build.openshift.io/v1/namespaces/jenkins/buildconfigs" />
+                </customTask>
+
+                <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
+                    <param name="targetName" value="openshift"/>
+                    <param name="template" value="{&quot;kind&quot;:&quot;BuildConfig&quot;,&quot;apiVersion&quot;:&quot;build.openshift.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;$projectName$-pipeline&quot;,&quot;namespace&quot;:&quot;jenkins&quot;,&quot;selfLink&quot;:&quot;/apis/build.openshift.io/v1/namespaces/jenkins/buildconfigs/$projectName$-pipeline&quot;,&quot;uid&quot;:&quot;a59eaf55-cc63-11e9-b74c-0a580a82001a&quot;,&quot;resourceVersion&quot;:&quot;1414909&quot;,&quot;creationTimestamp&quot;:&quot;2019-09-01T02:53:16Z&quot;},&quot;spec&quot;:{&quot;nodeSelector&quot;:{},&quot;output&quot;:{},&quot;resources&quot;:{},&quot;successfulBuildsHistoryLimit&quot;:5,&quot;failedBuildsHistoryLimit&quot;:5,&quot;strategy&quot;:{&quot;type&quot;:&quot;JenkinsPipeline&quot;,&quot;jenkinsPipelineStrategy&quot;:{&quot;jenkinsfile&quot;:&quot;node(&apos;maven&apos;)\n{\n \n def app = \&quot;$projectName$\&quot;\n def project = \&quot;jenkins\&quot;\n def deploytoenv = \&quot;test\&quot;\n \n\n stage(&apos;Build OpenShift Image&apos;) {\n     sh \&quot;oc start-build ${app} -n ${project} --follow\&quot;\n }\n \n stage(&apos;Tag Image to Test Environment&apos;) {\n     sh \&quot;oc tag ${project}/${app}:latest ${app}-${deploytoenv}/${app}:latest\&quot;\n }\n }&quot;}},&quot;postCommit&quot;:{},&quot;source&quot;:{&quot;type&quot;:&quot;None&quot;},&quot;triggers&quot;:[{&quot;type&quot;:&quot;GitLab&quot;,&quot;gitlab&quot;:{&quot;secret&quot;:&quot;$webHookSecretData$&quot;}}],&quot;runPolicy&quot;:&quot;Serial&quot;}}"/>
+                    <param name="kind" value="BuildConfig" />
+                    <param name="url" value="/apis/build.openshift.io/v1/namespaces/jenkins/buildconfigs" />
+                </customTask>
+
+                <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
+                    <param name="targetName" value="openshift"/>
+                    <param name="template" value="{&quot;kind&quot;:&quot;Secret&quot;,&quot;apiVersion&quot;:&quot;v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;webhook-$projectName$&quot;,&quot;namespace&quot;:&quot;sandbox-$uid$&quot;},&quot;data&quot;:{&quot;url&quot;:&quot;$weebhookURL$&quot;},&quot;type&quot;:&quot;Opaque&quot;}"/>
+                    <param name="kind" value="Secret" />
+                    <param name="url" value="/api/v1/namespaces/sandbox-$uid$/secrets" />
                 </customTask>
 
 
@@ -61,7 +83,7 @@
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift"/>
-                    <param name="template" value="{&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Service&quot;,&quot;metadata&quot;:{&quot;namespace&quot;:&quot;$projectName$-test&quot;,&quot;name&quot;:&quot;$projectName$&quot;},&quot;spec&quot;:{&quot;ports&quot;:[{&quot;port&quot;:8761,&quot;protocol&quot;:&quot;TCP&quot;,&quot;targetPort&quot;:8761}],&quot;selector&quot;:{&quot;deploymentConfig&quot;:&quot;eureka&quot;},&quot;sessionAffinity&quot;:&quot;None&quot;,&quot;type&quot;:&quot;ClusterIP&quot;},&quot;status&quot;:{&quot;loadBalancer&quot;:{}}}"/>
+                    <param name="template" value="{&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Service&quot;,&quot;metadata&quot;:{&quot;namespace&quot;:&quot;$projectName$-test&quot;,&quot;name&quot;:&quot;$projectName$&quot;},&quot;spec&quot;:{&quot;ports&quot;:[{&quot;port&quot;:8761,&quot;protocol&quot;:&quot;TCP&quot;,&quot;targetPort&quot;:8761}],&quot;selector&quot;:{&quot;deploymentConfig&quot;:&quot;$projectName$&quot;},&quot;sessionAffinity&quot;:&quot;None&quot;,&quot;type&quot;:&quot;ClusterIP&quot;},&quot;status&quot;:{&quot;loadBalancer&quot;:{}}}"/>
                     <param name="kind" value="Service" />
                     <param name="url" value="/api/v1/namespaces/$projectName$-test/services" />
                 </customTask>
@@ -76,6 +98,13 @@
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift"/>
                     <param name="template" value="{&quot;kind&quot;:&quot;RoleBinding&quot;,&quot;apiVersion&quot;:&quot;rbac.authorization.k8s.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;viewers&quot;,&quot;namespace&quot;:&quot;$projectName$-test&quot;},&quot;subjects&quot;:[{&quot;kind&quot;:&quot;Group&quot;,&quot;name&quot;:&quot;system:authenticated:oauth&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}],&quot;roleRef&quot;:{&quot;kind&quot;:&quot;ClusterRole&quot;,&quot;name&quot;:&quot;view&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}}"/>
+                    <param name="kind" value="RoleBinding" />
+                    <param name="url" value="/apis/rbac.authorization.k8s.io/v1/namespaces/$projectName$-test/rolebindings" />
+                </customTask>
+
+                <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
+                    <param name="targetName" value="openshift"/>
+                    <param name="template" value="{&quot;kind&quot;:&quot;RoleBinding&quot;,&quot;apiVersion&quot;:&quot;rbac.authorization.k8s.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;jenkins-tag&quot;,&quot;namespace&quot;:&quot;$projectName$-test&quot;},&quot;subjects&quot;:[{&quot;kind&quot;:&quot;ServiceAccount&quot;,&quot;name&quot;:&quot;jenkins&quot;,&quot;namespace&quot;:&quot;jenkins&quot;}],&quot;roleRef&quot;:{&quot;kind&quot;:&quot;ClusterRole&quot;,&quot;name&quot;:&quot;edit&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}}"/>
                     <param name="kind" value="RoleBinding" />
                     <param name="url" value="/apis/rbac.authorization.k8s.io/v1/namespaces/$projectName$-test/rolebindings" />
                 </customTask>
@@ -97,7 +126,7 @@
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift-prod"/>
-                    <param name="template" value="{&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Service&quot;,&quot;metadata&quot;:{&quot;namespace&quot;:&quot;$projectName$-prod&quot;,&quot;name&quot;:&quot;$projectName$&quot;},&quot;spec&quot;:{&quot;ports&quot;:[{&quot;port&quot;:8761,&quot;protocol&quot;:&quot;TCP&quot;,&quot;targetPort&quot;:8761}],&quot;selector&quot;:{&quot;deploymentConfig&quot;:&quot;eureka&quot;},&quot;sessionAffinity&quot;:&quot;None&quot;,&quot;type&quot;:&quot;ClusterIP&quot;},&quot;status&quot;:{&quot;loadBalancer&quot;:{}}}"/>
+                    <param name="template" value="{&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Service&quot;,&quot;metadata&quot;:{&quot;namespace&quot;:&quot;$projectName$-prod&quot;,&quot;name&quot;:&quot;$projectName$&quot;},&quot;spec&quot;:{&quot;ports&quot;:[{&quot;port&quot;:8761,&quot;protocol&quot;:&quot;TCP&quot;,&quot;targetPort&quot;:8761}],&quot;selector&quot;:{&quot;deploymentConfig&quot;:&quot;$projectName$&quot;},&quot;sessionAffinity&quot;:&quot;None&quot;,&quot;type&quot;:&quot;ClusterIP&quot;},&quot;status&quot;:{&quot;loadBalancer&quot;:{}}}"/>
                     <param name="kind" value="Service" />
                     <param name="url" value="/api/v1/namespaces/$projectName$-prod/services" />
                 </customTask>
