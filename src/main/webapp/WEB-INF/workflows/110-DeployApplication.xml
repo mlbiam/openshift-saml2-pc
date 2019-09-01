@@ -27,6 +27,7 @@
                 <!-- Jenkins Environment -->
                 <customTask className="com.tremolosecurity.unison.k8s.tasks.NewAppTasks" >
                     <param name="target" value="openshift"/>
+                    <param name="apiserverhost" value="#[OPENSHIFT_API_HOST]" />
                 </customTask>
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">

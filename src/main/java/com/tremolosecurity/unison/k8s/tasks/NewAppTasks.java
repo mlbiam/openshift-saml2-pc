@@ -20,6 +20,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  */
 public class NewAppTasks implements CustomTask {
     String target;
+    String apiserverhost;
 
     @Override
     public boolean doTask(User user, Map<String, Object> request) throws ProvisioningException {
@@ -50,13 +51,19 @@ public class NewAppTasks implements CustomTask {
        
 
         OpenShiftTarget oc = (OpenShiftTarget) GlobalEntries.getGlobalEntries().getConfigManager().getProvisioningEngine().getTarget(this.target).getProvider();
-        request.put("weebhookURL",oc.getUrl() + "/oapi/v1/namespaces/jenkins/buildconfigs/" + projectName + "/webhooks/" + secretData + "/gitlab");
+        String url = "https://" + this.apiserverhost + "/oapi/v1/namespaces/jenkins/buildconfigs/" + projectName + "/webhooks/" + secretData + "/gitlab";
+        try {
+            request.put("weebhookURL", new String(Base64.getEncoder().encode(url.getBytes("UTF-8"))));
+        } catch (UnsupportedEncodingException e) {
+            throw new ProvisioningException("nope",e);
+        }
         return true;
     }
 
     @Override
     public void init(WorkflowTask task, Map<String, Attribute> config) throws ProvisioningException {
         this.target = config.get("target").getValues().get(0);
+        this.apiserverhost = config.get("apiserverhost").getValues().get(0);
 	}
 
 	@Override
