@@ -84,7 +84,7 @@
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift"/>
-                    <param name="template" value="{&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Service&quot;,&quot;metadata&quot;:{&quot;namespace&quot;:&quot;$projectName$-test&quot;,&quot;name&quot;:&quot;$projectName$&quot;},&quot;spec&quot;:{&quot;ports&quot;:[{&quot;port&quot;:8761,&quot;protocol&quot;:&quot;TCP&quot;,&quot;targetPort&quot;:8761}],&quot;selector&quot;:{&quot;deploymentConfig&quot;:&quot;$projectName$&quot;},&quot;sessionAffinity&quot;:&quot;None&quot;,&quot;type&quot;:&quot;ClusterIP&quot;},&quot;status&quot;:{&quot;loadBalancer&quot;:{}}}"/>
+                    <param name="template" value="{&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Service&quot;,&quot;metadata&quot;:{&quot;namespace&quot;:&quot;$projectName$-test&quot;,&quot;name&quot;:&quot;$projectName$&quot;},&quot;spec&quot;:{&quot;ports&quot;:[{&quot;port&quot;:8080,&quot;protocol&quot;:&quot;TCP&quot;,&quot;targetPort&quot;:8080}],&quot;selector&quot;:{&quot;deploymentConfig&quot;:&quot;$projectName$&quot;},&quot;sessionAffinity&quot;:&quot;None&quot;,&quot;type&quot;:&quot;ClusterIP&quot;},&quot;status&quot;:{&quot;loadBalancer&quot;:{}}}"/>
                     <param name="kind" value="Service" />
                     <param name="url" value="/api/v1/namespaces/$projectName$-test/services" />
                 </customTask>
@@ -110,6 +110,13 @@
                     <param name="url" value="/apis/rbac.authorization.k8s.io/v1/namespaces/$projectName$-test/rolebindings" />
                 </customTask>
 
+                <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
+                    <param name="targetName" value="openshift"/>
+                    <param name="template" value="{&quot;kind&quot;:&quot;Route&quot;,&quot;apiVersion&quot;:&quot;route.openshift.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;$projectName$&quot;,&quot;namespace&quot;:&quot;$projectName$-test&quot;},&quot;spec&quot;:{&quot;host&quot;:&quot;$projectName$.#[DEV_DNS_SUFFIX]&quot;,&quot;subdomain&quot;:&quot;&quot;,&quot;to&quot;:{&quot;kind&quot;:&quot;Service&quot;,&quot;name&quot;:&quot;$projectName$&quot;,&quot;weight&quot;:100},&quot;port&quot;:{&quot;targetPort&quot;:8080},&quot;tls&quot;:{&quot;termination&quot;:&quot;edge&quot;},&quot;wildcardPolicy&quot;:&quot;None&quot;}}"/>
+                    <param name="kind" value="Route" />
+                    <param name="url" value="/apis/route.openshift.io/v1/namespaces/$projectName$-test/routes/$projectName$" />
+                </customTask>
+
                 <!-- Prod objects-->
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift-prod"/>
@@ -127,7 +134,7 @@
 
                 <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
                     <param name="targetName" value="openshift-prod"/>
-                    <param name="template" value="{&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Service&quot;,&quot;metadata&quot;:{&quot;namespace&quot;:&quot;$projectName$-prod&quot;,&quot;name&quot;:&quot;$projectName$&quot;},&quot;spec&quot;:{&quot;ports&quot;:[{&quot;port&quot;:8761,&quot;protocol&quot;:&quot;TCP&quot;,&quot;targetPort&quot;:8761}],&quot;selector&quot;:{&quot;deploymentConfig&quot;:&quot;$projectName$&quot;},&quot;sessionAffinity&quot;:&quot;None&quot;,&quot;type&quot;:&quot;ClusterIP&quot;},&quot;status&quot;:{&quot;loadBalancer&quot;:{}}}"/>
+                    <param name="template" value="{&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Service&quot;,&quot;metadata&quot;:{&quot;namespace&quot;:&quot;$projectName$-prod&quot;,&quot;name&quot;:&quot;$projectName$&quot;},&quot;spec&quot;:{&quot;ports&quot;:[{&quot;port&quot;:8080,&quot;protocol&quot;:&quot;TCP&quot;,&quot;targetPort&quot;:8080}],&quot;selector&quot;:{&quot;deploymentConfig&quot;:&quot;$projectName$&quot;},&quot;sessionAffinity&quot;:&quot;None&quot;,&quot;type&quot;:&quot;ClusterIP&quot;},&quot;status&quot;:{&quot;loadBalancer&quot;:{}}}"/>
                     <param name="kind" value="Service" />
                     <param name="url" value="/api/v1/namespaces/$projectName$-prod/services" />
                 </customTask>
@@ -144,6 +151,13 @@
                     <param name="template" value="{&quot;kind&quot;:&quot;RoleBinding&quot;,&quot;apiVersion&quot;:&quot;rbac.authorization.k8s.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;viewers&quot;,&quot;namespace&quot;:&quot;$projectName$-prod&quot;},&quot;subjects&quot;:[{&quot;kind&quot;:&quot;Group&quot;,&quot;name&quot;:&quot;system:authenticated:oauth&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}],&quot;roleRef&quot;:{&quot;kind&quot;:&quot;ClusterRole&quot;,&quot;name&quot;:&quot;view&quot;,&quot;apiGroup&quot;:&quot;rbac.authorization.k8s.io&quot;}}"/>
                     <param name="kind" value="RoleBinding" />
                     <param name="url" value="/apis/rbac.authorization.k8s.io/v1/namespaces/$projectName$-prod/rolebindings" />
+                </customTask>
+
+                <customTask className="com.tremolosecurity.provisioning.tasks.CreateK8sObject">
+                    <param name="targetName" value="openshift-prod"/>
+                    <param name="template" value="{&quot;kind&quot;:&quot;Route&quot;,&quot;apiVersion&quot;:&quot;route.openshift.io/v1&quot;,&quot;metadata&quot;:{&quot;name&quot;:&quot;$projectName$&quot;,&quot;namespace&quot;:&quot;$projectName$-prod&quot;},&quot;spec&quot;:{&quot;host&quot;:&quot;$projectName$.#[PROD_DNS_SUFFIX]&quot;,&quot;subdomain&quot;:&quot;&quot;,&quot;to&quot;:{&quot;kind&quot;:&quot;Service&quot;,&quot;name&quot;:&quot;$projectName$&quot;,&quot;weight&quot;:100},&quot;port&quot;:{&quot;targetPort&quot;:8080},&quot;tls&quot;:{&quot;termination&quot;:&quot;edge&quot;},&quot;wildcardPolicy&quot;:&quot;None&quot;}}"/>
+                    <param name="kind" value="Route" />
+                    <param name="url" value="/apis/route.openshift.io/v1/namespaces/$projectName$-prod/routes/$projectName$" />
                 </customTask>
 
                 <!-- provision pull token to prod -->
