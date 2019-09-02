@@ -24,7 +24,7 @@
     <domain>*</domain>
     <logoutURI>/check_alive</logoutURI>
     <keyAlias>session-unison</keyAlias>
-    <secure>false</secure>
+    <secure>true</secure>
     <timeout>true</timeout>
     <scope>-1</scope>
   </cookieConfig>

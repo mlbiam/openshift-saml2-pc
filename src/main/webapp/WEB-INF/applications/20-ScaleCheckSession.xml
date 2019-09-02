@@ -38,7 +38,7 @@
     <domain>#[OU_HOST]</domain>
     <logoutURI>/scale/sessioncheck</logoutURI>
     <keyAlias>session-unison</keyAlias>
-    <secure>false</secure>
+    <secure>true</secure>
     <timeout>1</timeout>
     <scope>-1</scope>
   </cookieConfig>
